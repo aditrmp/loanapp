@@ -10,12 +10,14 @@ public interface MasterLoanRepository extends JpaRepository<MasterLoan, Integer>
 	@Query(value = "SELECT * from master_loan WHERE user_id = :userId and is_submitted = 0 and is_active = 1",
 			nativeQuery = true)
 	MasterLoan findIncompleteApplicationLoan(
-			@Param("userId") String userId
+			@Param("userId") int userId
 	) ;
 	
 	@Query(value = "SELECT * from master_loan WHERE user_id = :userId and is_submitted = 1 and is_active = 1",
 			nativeQuery = true)
 	MasterLoan findSubmittedApplicationLoan(
-			@Param("userId") String userId
+			@Param("userId") int userId
 	) ;
+	
+	
 }

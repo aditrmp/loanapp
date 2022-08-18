@@ -29,13 +29,14 @@ public class LoanDataEntryController {
 	public ResponseEntity<?> dataEntry(@RequestBody LoanDataEntryDto req) throws URISyntaxException {
 		try {
 			if(req != null) {
-				MasterLoan loanData = loanService.getUnsubmittedLoan(req.getUserId());
+				MasterLoan loanData = loanService.getUnsubmittedLoan(Integer.valueOf(req.getUserId()));
 				
 				Date date = new Date();
 				MasterLoan item = new MasterLoan();
 				
 				if(loanData != null) {
-					item.setId(loanData.getId());
+					return new ResponseEntity<>(
+							"Active loan already submitted. Wait for scoring process.", HttpStatus.OK);
 				}
 				item.setUserId(req.getUserId());
 				item.setWorkflowStatus("DATAENT");
@@ -65,7 +66,7 @@ public class LoanDataEntryController {
 	public ResponseEntity<?> dataGet(String userId) throws URISyntaxException {
 		try {
 			if(userId != null) {
-				MasterLoan loanData = loanService.getUnsubmittedLoan(userId);
+				MasterLoan loanData = loanService.getUnsubmittedLoan(Integer.valueOf(userId));
 				if(loanData == null) {
 					return new ResponseEntity<>(
 							"Loan data Not found.", HttpStatus.ACCEPTED);
@@ -92,7 +93,7 @@ public class LoanDataEntryController {
 			if(userId != null) {
 				Date date = new Date();
 				
-				MasterLoan loanData = loanService.getUnsubmittedLoan(userId);
+				MasterLoan loanData = loanService.getUnsubmittedLoan(Integer.valueOf(userId));
 				if(loanData == null) {
 					return new ResponseEntity<>(
 							"User do not have active application. Please create application first!", HttpStatus.ACCEPTED);
@@ -116,6 +117,31 @@ public class LoanDataEntryController {
 
 				return new ResponseEntity<>(
 						item, HttpStatus.OK);
+			}else {
+				return new ResponseEntity<>(
+						"Request is null", HttpStatus.ACCEPTED);
+			} 
+			
+		} catch (HibernateException e) {
+			System.out.println(e);
+			return new ResponseEntity<>(
+					"Error", HttpStatus.CONFLICT);
+		}
+	}
+	
+	@RequestMapping(value = "/getloanstatus", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+	@Transactional
+	public ResponseEntity<?> statusGet(String userId) throws URISyntaxException {
+		try {
+			if(userId != null) {
+				MasterLoan loanData = loanService.getUnsubmittedLoan(Integer.valueOf(userId));
+				if(loanData == null) {
+					return new ResponseEntity<>(
+							"Loan data Not found.", HttpStatus.ACCEPTED);
+				}
+				
+				return new ResponseEntity<>(
+						loanData, HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>(
 						"Request is null", HttpStatus.ACCEPTED);

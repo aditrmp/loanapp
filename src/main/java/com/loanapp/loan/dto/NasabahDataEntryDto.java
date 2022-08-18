@@ -15,7 +15,8 @@ public class NasabahDataEntryDto {
 	private String nationality;
 	private String phoneNumber;
 	private String mariageStatus;
-	private String childCount;
 	private String occupation;
-
+	private String occupationLong;	
+	private String monthlyIncome;
+	private String email;
 }

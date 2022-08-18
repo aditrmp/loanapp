@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class LoanDataEntryDto {
 	private String userId;
-	private String workflowStatus;
 	private String productCode;
 	private long creditApplicationNominal;
 }

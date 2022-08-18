@@ -13,8 +13,13 @@ public class MasterNasabahServices {
 		this.masterNasabahRepository = masterNasabahRepository;
 	}
 	
-	public MasterNasabah findNasabahByNik(String nik) {
-		MasterNasabah nasabahdata = masterNasabahRepository.findNasabahByNik(nik);
+	public MasterNasabah findNasabahByNik(String nik, String email) {
+		MasterNasabah nasabahdata = masterNasabahRepository.findNasabahByNik(nik, email);
+		return nasabahdata;
+	}
+	
+	public MasterNasabah findNasabahByOtherNik(String nik, String email) {
+		MasterNasabah nasabahdata = masterNasabahRepository.findNasabahByOtherNik(nik, email);
 		return nasabahdata;
 	}
 	

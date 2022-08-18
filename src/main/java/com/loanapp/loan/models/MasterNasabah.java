@@ -53,14 +53,20 @@ public class MasterNasabah extends DataDetail{
 	@Column(name = "phone_number", nullable = true)
 	private String phoneNumber;
 
-	@Column(name = "mariage_status")
-	private String mariageStatus;
-
-	@Column(name = "child_count", nullable = false)
-	private String childCount;
+	@Column(name = "mariage_status", nullable = false)
+	private long mariageStatus;
 
 	@Column(name = "occupation", nullable = false)
-	private String occupation;
+	private long occupation;
+
+	@Column(name = "occupation_long", nullable = false)
+	private long occupationLong;	
+	
+	@Column(name = "monthly_income", nullable = false)
+	private long monthlyIncome;
+	
+	@Column(name = "email", nullable = true)
+	private String email;
 	
     /**
    	 * Indicate is user active or not

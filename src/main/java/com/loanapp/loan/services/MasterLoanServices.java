@@ -13,13 +13,13 @@ public class MasterLoanServices {
 		this.masterLoanRepository = masterLoanRepository;
 	}
 	
-	public MasterLoan getUnsubmittedLoan(String userId) {
+	public MasterLoan getUnsubmittedLoan(int userId) {
 		MasterLoan data = masterLoanRepository.findIncompleteApplicationLoan(userId);
 		
 		return data;
 	}
 
-	public MasterLoan getSubmittedLoan(String userId) {
+	public MasterLoan getSubmittedLoan(int userId) {
 		MasterLoan data = masterLoanRepository.findSubmittedApplicationLoan(userId);
 		
 		return data;
