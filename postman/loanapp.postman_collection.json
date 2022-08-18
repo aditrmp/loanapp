@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "784cc011-ba18-46a6-b773-cc4939c3e13d",
+		"name": "loanapp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "nasabah/nasabahdataentry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nik\" : \"1\",\r\n    \"noKK\" : \"1\",\r\n    \"customerName\" : \"Profil 1\",\r\n\t\"dob\" : \"1993-10-05\",\r\n    \"motherName\" : \"Titik s\",\r\n    \"gender\" : \"L\",\r\n    \"nationality\" : \"Indonesia\",\r\n    \"phoneNumber\" : \"082137614372\",\r\n    \"mariageStatus\" : \"17\",\r\n    \"occupation\" : \"7\",\r\n    \"occupationLong\" : \"12\",\r\n    \"monthlyIncome\" : \"6000000\",\r\n    \"email\" : \"adit@rp.com\"    \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8871/nasabah/nasabahdataentry",
+					"host": [
+						"localhost"
+					],
+					"port": "8871",
+					"path": [
+						"nasabah",
+						"nasabahdataentry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nasabah/nasabahdataget",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8871/nasabah/nasabahdataget?nik=1&email=adit@rp.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8871",
+					"path": [
+						"nasabah",
+						"nasabahdataget"
+					],
+					"query": [
+						{
+							"key": "nik",
+							"value": "1"
+						},
+						{
+							"key": "email",
+							"value": "adit@rp.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loan/loandataentry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\" : \"32\",\r\n    \"productCode\" : \"1\",\r\n    \"creditApplicationNominal\" : 6000000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8871/loan/loandataentry",
+					"host": [
+						"localhost"
+					],
+					"port": "8871",
+					"path": [
+						"loan",
+						"loandataentry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loan/getloandata",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8871/loan/getloandata?userId=32",
+					"host": [
+						"localhost"
+					],
+					"port": "8871",
+					"path": [
+						"loan",
+						"getloandata"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "32"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loan/submitloandata",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8871/loan/submitloandata?userId=32",
+					"host": [
+						"localhost"
+					],
+					"port": "8871",
+					"path": [
+						"loan",
+						"submitloandata"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "32"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scoring/setscore",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"occupation\": 7,\r\n    \"occupationLong\": 12,\r\n    \"salary\": 16,\r\n    \"marriageStatus\": 17,\r\n    \"age\": 22,\r\n    \"loanId\": \"33\",\r\n    \"userId\" : \"32\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8871/scoring/setscore",
+					"host": [
+						"localhost"
+					],
+					"port": "8871",
+					"path": [
+						"scoring",
+						"setscore"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "25",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
