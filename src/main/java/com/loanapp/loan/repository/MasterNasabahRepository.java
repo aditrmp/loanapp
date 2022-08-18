@@ -20,4 +20,11 @@ public interface MasterNasabahRepository extends JpaRepository<MasterNasabah, In
 				@Param("nik") String nik,
 				@Param("email") String email
 				) ;
+
+	
+	@Query(value = "SELECT * from master_nasabah WHERE id = :id and is_active=1",
+			nativeQuery = true)
+	MasterNasabah findNasabahById(
+				@Param("id") long id
+				) ;
 }

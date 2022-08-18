@@ -23,6 +23,11 @@ public class MasterNasabahServices {
 		return nasabahdata;
 	}
 	
+	public MasterNasabah findNasabahById(int id) {
+		MasterNasabah nasabahdata = masterNasabahRepository.findNasabahById(id);
+		return nasabahdata;
+	}
+	
 	public void saveNasabah(MasterNasabah data) {
 		masterNasabahRepository.save(data);
 	}
